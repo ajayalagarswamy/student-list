@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+     table,
+    th,
+    td {
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        padding-right: 40px;
+    }
+    </style>
+</head>
+<body>
+    <h1>Student list</h1>
+    <table>
+        <tr>
+            <th>SI NO</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Roll_NO</th>
+            <th colspan="5">Marks</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        {%for i in data%}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i.Name}}</td>
+            <td>{{i.Age}}</td>
+            <td>{{i.Roll_NO}}</td>
+            {% for j in i.Marks%}
+            <td>{{j}}</td>
+            {%endfor%}
+            <td><a href="{{url_for('edit',b=loop.index)}}">Edit</a></td>
+            <td><a href="{{url_for('home1',a=loop.index)}}">Delete</a></td>
+
+        </tr>
+        {%endfor%}
+    </table>
+    <form method="post">
+        <input type="text" placeholder="enter the name" name="name">
+        <input type="number" placeholder="enter the age" name="age">
+        <input type="number" placeholder="enter the rollno"name="rollno">
+        <input type="number" placeholder="enter the marks1"name="marks1">
+        <input type="number" placeholder="enter the marks2"name="marks2">
+        <input type="number" placeholder="enter the marks3" name="marks3">
+        <input type="number" placeholder="enter the marks4"name="marks4">
+        <input type="number" placeholder="enter the marks5"name=marks5>
+        <input type="submit" value="submit">
+
+
+
+
+    </form>
+    
+</body>
+</html>
